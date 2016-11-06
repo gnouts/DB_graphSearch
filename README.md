@@ -1,7 +1,7 @@
 # DB_graphSearch
 
 ##Dependencies:
-maven3
+* maven3
 
 For Ubuntu/Debian:
 ```
