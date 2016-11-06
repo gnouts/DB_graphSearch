@@ -25,15 +25,15 @@ For Ubuntu/Debian:
  ###File format
  The database file and query file must be this format : 
 
-index
-nodes number
-node label
-...
-node label
-edges number
-edge label
-...
-edges label
+index</br>
+nodes number</br>
+node label</br>
+...</br>
+node label</br>
+edges number</br>
+edge label</br>
+...</br>
+edges label</br>
 
 ```
 #1
