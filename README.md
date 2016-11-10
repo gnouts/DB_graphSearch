@@ -14,14 +14,16 @@ For Ubuntu/Debian:
   git clone https://github.com/gnouts/DB_graphSearch.git
   cd DB_graphSearch
   git clone https://github.com/tdebatty/java-LSH.git
-  git clone https://github.com/jankotek/mapdb.git
   cd graph
   mvn clean | mvn assembly:single | mvn -X package
 ```
 ##Run
 ```
   java -jar target/graph-1.0-SNAPSHOT-jar-with-dependencies.jar <database_file> <query_file> > ../output.txt
- ```
+```
+
+You will find the output in DB_graphSearch/output.txt
+ 
  ###File format
  The database file and query file must be this format : 
 
