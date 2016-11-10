@@ -62,9 +62,7 @@ class Graph
 
         //##############################
         //    MINHASH DATABASE 
-
         int[] sig = minhash.signature(fingerprint);
-  //      System.out.println("Signature "+index_i+" :"+sig);
         //###############################
         //    STORE IN TREE
         ht.put(sig, index_S);
@@ -73,102 +71,77 @@ class Graph
         if(iteration > 1){
           index_S = br.readLine();
         }
-    }//END creating database
+      }//END creating database
 
       //################################
       //    READ INPUT QUERY
-    String index_S2;
-    int index_i2;
-    int nodes_number2;
-    int edges_number2;
-    String[] nodes_list2 = new String[1000];
-    String[] edges_list2 = new String[1000];
-    int iteration2 = 1;
-    int total_queries = 0;
-    index_S2 = br2.readLine();
-    while ( index_S2 != null) {
-      index_i2 = Integer.parseInt(index_S2.substring(1));
-      total_queries = index_i2;
-      nodes_number2 = Integer.parseInt(br2.readLine());
-      for (int i=0; i<nodes_number2; i++){
-        nodes_list2[i] = br2.readLine();
-      }
-      edges_number2 = Integer.parseInt(br2.readLine());
-      for (int i=0; i<edges_number2; i++){
-        edges_list2[i] = br2.readLine();
-      }
-       iteration2 = 2;
-      if(iteration2 > 1){
-        index_S2 = br2.readLine();
-      }
-      //###########################
-      //    FINGEPRINTING QUERIES
-      TreeSet<Integer> fingerprint2 = new TreeSet<Integer>();
-      fingerprint2.add(nodes_number2);
-      for (int node=0; node<nodes_number2; node++){
-        for (char letter : nodes_list2[node].toCharArray()){
-          fingerprint2.add((int)letter);
+      String index_S2;
+      int index_i2;
+      int nodes_number2;
+      int edges_number2;
+      String[] nodes_list2 = new String[1000];
+      String[] edges_list2 = new String[1000];
+      int iteration2 = 1;
+      int total_queries = 0;
+      index_S2 = br2.readLine();
+      while ( index_S2 != null) {
+        index_i2 = Integer.parseInt(index_S2.substring(1));
+        total_queries = index_i2;
+        nodes_number2 = Integer.parseInt(br2.readLine());
+        for (int i=0; i<nodes_number2; i++){
+          nodes_list2[i] = br2.readLine();
+        }
+        edges_number2 = Integer.parseInt(br2.readLine());
+        for (int i=0; i<edges_number2; i++){
+          edges_list2[i] = br2.readLine();
+        }
+         iteration2 = 2;
+        if(iteration2 > 1){
+          index_S2 = br2.readLine();
+        }
+        //###########################
+        //    FINGEPRINTING QUERIES
+        TreeSet<Integer> fingerprint2 = new TreeSet<Integer>();
+        fingerprint2.add(nodes_number2);
+        for (int node=0; node<nodes_number2; node++){
+          for (char letter : nodes_list2[node].toCharArray()){
+            fingerprint2.add((int)letter);
+          }
+        }
+        for (int edge=0; edge<edges_number2; edge++){
+          fingerprint2.add((int)edges_list2[edge].charAt(0));
+          fingerprint2.add((int)edges_list2[edge].charAt(2));
+          fingerprint2.add((int)edges_list2[edge].charAt(4));
+        }
+
+        //##########################
+        //    MINHASH QUERIES 
+        int[] sig2 = minhash.signature(fingerprint2);
+        
+        //###########################
+        //    MATCHES
+        TreeSet<String> result_for_one  = new TreeSet<String>();
+        for( int[] sigkey : ht.keySet() ){
+          if( minhash.similarity(sigkey,sig2) > 0.96 ){
+              result_for_one.add(ht.get(sigkey).substring(1));
+            }
+          result.put(index_i2,result_for_one);
         }
       }
-      for (int edge=0; edge<edges_number2; edge++){
-        fingerprint2.add((int)edges_list2[edge].charAt(0));
-        fingerprint2.add((int)edges_list2[edge].charAt(2));
-        fingerprint2.add((int)edges_list2[edge].charAt(4));
+      for (int i=1; i<=total_queries; i++){
+        if ( result.get(i).isEmpty() ){
+          System.out.println("0\n");
+        }else{
+          System.out.println(result.get(i).size());
+          System.out.println(result.get(i));
+        }
       }
-
-      //##########################
-      //    MINHASH QUERIES 
-      int[] sig2 = minhash.signature(fingerprint2);
-//      System.out.println("Query "+index_i2+" :"+sig2);
-      
-      //###########################
-      //    MATCHES
-      TreeSet<String> result_complet  = new TreeSet<String>();
-      for( int[] sigkey : ht.keySet() ){
-        if( minhash.similarity(sigkey,sig2) > 0.96 ){
-         //   System.out.println(index_i2);
-            //result.put(index_i2, ht.get(sigkey).substring(1));
-            result_complet.add(ht.get(sigkey).substring(1));
-         //   System.out.println(result_complet);
-           // System.out.println(ht.get(sigkey).substring(1));
-           // System.out.println("Similarity of "+ht.get(sigkey).substring(1)+" for "+index_i2+" : "+minhash.similarity(sigkey,sig2));
-          }/*else{
-            result.put(index_i2, "0\n");
-          //  System.out.println("0\n");        ;
-          }*/
-         // System.out.println("Similarity of "+ht.get(sigkey)+" : "+minhash.similarity(sigkey,sig2));
-       // System.out.println(index_i2);
-       // System.out.println(result_complet);
-        result.put(index_i2,result_complet);
-       //result_complet.clear();
-      }
-
-
-
-     // if( ht.containsKey(sig2) == true ){
-  /*    if( minhash.similarity(sig,sig2) > 0.6 ){
-        System.out.println(index_i2);
-        System.out.println(ht.get(sig2));
-      }else{
-        System.out.println("0\n");        ;
-      }*/
-    } // end reading query file
-  //System.out.println(result);
-  for (int i=1; i<=total_queries; i++){
-   // System.out.println(i);
-    if ( result.get(i).isEmpty() ){
-      System.out.println("0\n");
-    }else{
-      System.out.println(result.get(i).size());
-      System.out.println(result.get(i));
-    }
-  }
-  //Close the input stream
-  in.close();
-  in2.close();
-  } //end try
-  catch (Exception e){//Catch exception if any
-    System.err.println("Error: " + e.getMessage());
-  } //end catch
+      //Close the input stream
+      in.close();
+      in2.close();
+    } //end try
+    catch (Exception e){//Catch exception if any
+      System.err.println("Error: " + e.getMessage());
+    } //end catch
   } //end main
 } //end class
