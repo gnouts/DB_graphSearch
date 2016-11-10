@@ -2,10 +2,12 @@
 
 ##Dependencies:
 * maven3
+* java
+* java-LSH library by tdebatty (cf build instruction)
 
 For Ubuntu/Debian:
 ```
-  sudo apt-get install maven
+  sudo apt-get install maven java
 ```
 ##Build
 ```
@@ -20,7 +22,7 @@ For Ubuntu/Debian:
 ```
 ##Run
 ```
-  java -jar target/graph-1.0-SNAPSHOT-jar-with-dependencies.jar <database_file> <query_file>
+  java -jar target/graph-1.0-SNAPSHOT-jar-with-dependencies.jar <database_file> <query_file> > ../output.txt
  ```
  ###File format
  The database file and query file must be this format : 
