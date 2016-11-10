@@ -16,9 +16,7 @@ For Ubuntu/Debian:
   git clone https://github.com/tdebatty/java-LSH.git
   git clone https://github.com/jankotek/mapdb.git
   cd graph
-  mvn clean
-  mvn assembly:single
-  mvn -X package
+  mvn clean | mvn assembly:single | mvn -X package
 ```
 ##Run
 ```
