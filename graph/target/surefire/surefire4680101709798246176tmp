@@ -1,16 +1,16 @@
 #surefire
-#Sun Nov 06 10:25:38 IST 2016
-testClassesDirectory=/home/nouts/ee16f008/graph/target/test-classes
+#Thu Nov 10 16:33:56 IST 2016
+testClassesDirectory=/home/nouts/git_project/DB_graphSearch/graph/target/test-classes
 classPathUrl.4=/home/nouts/.m2/repository/info/debatty/java-string-similarity/0.12/java-string-similarity-0.12.jar
 forkMode=once
 classPathUrl.3=/home/nouts/.m2/repository/info/debatty/java-lsh/0.10/java-lsh-0.10.jar
 classPathUrl.2=/home/nouts/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar
 useManifestOnlyJar=true
-classPathUrl.1=/home/nouts/ee16f008/graph/target/classes
-reportsDirectory=/home/nouts/ee16f008/graph/target/surefire-reports
-classPathUrl.0=/home/nouts/ee16f008/graph/target/test-classes
+classPathUrl.1=/home/nouts/git_project/DB_graphSearch/graph/target/classes
+reportsDirectory=/home/nouts/git_project/DB_graphSearch/graph/target/surefire-reports
+classPathUrl.0=/home/nouts/git_project/DB_graphSearch/graph/target/test-classes
 providerConfiguration=org.apache.maven.surefire.junit.JUnit3Provider
-testSuiteDefinitionTestSourceDirectory=/home/nouts/ee16f008/graph/src/test/java
+testSuiteDefinitionTestSourceDirectory=/home/nouts/git_project/DB_graphSearch/graph/src/test/java
 surefireClassPathUrl.1=/home/nouts/.m2/repository/org/apache/maven/surefire/surefire-api/2.10/surefire-api-2.10.jar
 surefireClassPathUrl.0=/home/nouts/.m2/repository/org/apache/maven/surefire/surefire-junit3/2.10/surefire-junit3-2.10.jar
 runOrder=filesystem
